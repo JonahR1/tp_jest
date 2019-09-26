@@ -1,0 +1,25 @@
+{
+  "name": "test-tp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kirouane/test-tp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kirouane/test-tp/issues"
+  },
+  "homepage": "https://github.com/Kirouane/test-tp#readme",
+  "devDependencies": {
+    "jest": "^24.1.0"
+  }
+}
