@@ -14,3 +14,16 @@ describe("overlaps" , () => {
     });
 });
 
+describe("includes" , () => {
+    var i1 = new Interval(0,2);
+    test('Test (0,2) and (0,1) => true', () => {
+        var i2 = new Interval(0, 1);
+
+        expect(i1.includes(i2)).toBe(true);
+    });
+    test('Test (0,2) and (0,3) => false', () => {
+        var i2 = new Interval(0, 3);
+
+        expect(i1.includes(i2)).toBe(false);
+    });
+});
