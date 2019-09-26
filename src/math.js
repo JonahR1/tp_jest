@@ -127,11 +127,11 @@ Util.cipher = function (phrase) {
 Util.pairs = function(array) {
     let i = 0;
 
-    var
-
-    while(array.indexOf(array[i])) {
-
-    }
+    // var
+    //
+    // while(array.indexOf(array[i])) {
+    //
+    // }
 };
 
 module.exports = Util;
