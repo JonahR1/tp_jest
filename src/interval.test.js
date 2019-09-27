@@ -56,3 +56,17 @@ describe("intersection" , () => {
         expect(i1.intersection(i2)).toStrictEqual(null);
     });
 });
+
+describe("exclusion" , () => {
+    var i1 = new Interval(0,3);
+    test('Test (0,3) and (1,4) => [(0, 1), (3, 4)]', () => {
+        var i2 = new Interval(1, 4);
+
+        expect(i1.exclusion(i2)).toStrictEqual([new Interval(0, 1), new Interval(3, 4)]);
+    });
+    test('Test (0,3) and (4,6) => null', () => {
+        var i2 = new Interval(4, 6);
+
+        expect(i1.exclusion(i2)).toStrictEqual([i1, i2]);
+    });
+});
