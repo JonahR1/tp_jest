@@ -117,7 +117,32 @@ class Interval {
      * @returns {Interval[]}
      */
     exclusion(interval) {
+        var intervals =  [];
+        if(this.end > interval.start && this.start < interval.end) {
+            let start1, start2, end1, end2;
 
+            if(this.start < interval.start) {
+                start1 = this.start;
+                start2 = this.end;
+                end1 = interval.start;
+                end2 = interval.end;
+            }
+            else {
+                start1 = interval.start;
+                start2 = interval.end;
+                end1 = this.start;
+                end2 = this.end;
+            }
+
+            intervals.push(new Interval(start1, end1));
+            intervals.push(new Interval(start2, end2));
+        }
+        else {
+            intervals.push(this);
+            intervals.push(interval);
+        }
+
+        return intervals;
     };
 }
 
