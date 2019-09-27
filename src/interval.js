@@ -63,7 +63,16 @@ class Interval {
      * @returns {Interval[]}
      */
     union(interval) {
+        var intervals =  [];
+        if(this.end >= interval.start && this.start <= interval.end) {
+            intervals.push(new Interval(this.start <= interval.start ? this.start : interval.start, this.end >= interval.end ? this.end : interval.end));
+        }
+        else {
+            intervals.push(this);
+            intervals.push(interval);
+        }
 
+        return intervals;
     };
 
     /**
