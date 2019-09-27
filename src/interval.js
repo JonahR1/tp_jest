@@ -92,7 +92,12 @@ class Interval {
      * @returns {Interval|null}
      */
     intersection(interval) {
+        var result = null;
+        if(this.end >= interval.start && this.start <= interval.end) {
+            result = new Interval(this.start >= interval.start ? this.start : interval.start, this.end <= interval.end ? this.end : interval.end);
+        }
 
+        return result;
     };
 
     /**

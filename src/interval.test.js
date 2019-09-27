@@ -41,3 +41,18 @@ describe("union" , () => {
         expect(i1.union(i2)).toStrictEqual([i1, i2]);
     });
 });
+
+
+describe("intersection" , () => {
+    var i1 = new Interval(0,3);
+    test('Test (0,3) and (1,4) => (1, 3)', () => {
+        var i2 = new Interval(1, 4);
+
+        expect(i1.intersection(i2)).toStrictEqual(new Interval(1, 3));
+    });
+    test('Test (0,3) and (4,6) => null', () => {
+        var i2 = new Interval(4, 6);
+
+        expect(i1.intersection(i2)).toStrictEqual(null);
+    });
+});
