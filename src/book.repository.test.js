@@ -30,3 +30,18 @@ describe('Book repository getTotalCount', function () {
         expect(repository.getTotalCount()).toBe(1);
     });
 });
+
+describe('Book repository getTotalPrice', function () {
+
+    test('get total price of books', () => {
+
+        const dbMock = {
+            get : jest.fn().mockReturnThis(),
+            size: jest.fn().mockReturnThis(),
+            value : jest.fn().mockReturnValue(4).mockReturnValueOnce(1)
+        };
+        const repository = new BookRepository(dbMock);
+
+        expect(repository.getTotalPrice()).toBe(4);
+    });
+});

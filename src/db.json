@@ -47,6 +47,42 @@
       "name": "test",
       "price": 6.1,
       "added_at": "2019-01-01"
+    },
+    {
+      "id": 1,
+      "name": "test",
+      "price": 6.1,
+      "added_at": "2019-01-01"
+    },
+    {
+      "id": 1,
+      "name": "test",
+      "price": 6.1,
+      "added_at": "2019-01-01"
+    },
+    {
+      "id": 1,
+      "name": "test",
+      "price": 6.1,
+      "added_at": "2019-01-01"
+    },
+    {
+      "id": 1,
+      "name": "test",
+      "price": 6.1,
+      "added_at": "2019-01-01"
+    },
+    {
+      "id": 1,
+      "name": "test",
+      "price": 6.1,
+      "added_at": "2019-01-01"
+    },
+    {
+      "id": 1,
+      "name": "test",
+      "price": 6.1,
+      "added_at": "2019-01-01"
     }
   ]
 }
