@@ -30,3 +30,25 @@ describe('Book repository getTotalCount', function () {
         expect(repository.getTotalCount()).toBe(1);
     });
 });
+
+describe('Book repository getBookByName', function () {
+
+    var object = {
+        'id' : 1,
+        "name" :"test",
+        'price' :6.1,
+        "added_at" : '2019-01-01'
+    };
+
+    test('get book by name ', () => {
+
+        const dbMock = {
+            get : jest.fn().mockReturnThis(),
+            find : jest.fn().mockReturnThis(),
+            value : jest.fn().mockReturnValue(object)
+        };
+        const repository = new BookRepository(dbMock);
+
+        expect(repository.getBookByName('test')).toStrictEqual(object);
+    });
+});
