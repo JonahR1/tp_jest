@@ -37,7 +37,11 @@ class BookRepository {
      * Retourne un livre
      */
     getBookByName(bookName) {
-        return this.db.get('books').find({name: "test"}).value();
+        let result = this.db.get('books').find({name: bookName}).value()
+
+        if(typeof(result) == "undefined") result = null;
+
+        return result;
     }
 
     /**

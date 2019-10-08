@@ -55,7 +55,7 @@ describe('Book repository getBookByName', function () {
         "added_at" : '2019-01-01'
     };
 
-    test('get book by name ', () => {
+    test('get book by name with a book result', () => {
 
         const dbMock = {
             get : jest.fn().mockReturnThis(),
@@ -65,6 +65,18 @@ describe('Book repository getBookByName', function () {
         const repository = new BookRepository(dbMock);
 
         expect(repository.getBookByName('test')).toStrictEqual(object);
+    });
+
+    test("get book by name with a null result (bookName doesn't exist)", () => {
+
+        const dbMock = {
+            get : jest.fn().mockReturnThis(),
+            find : jest.fn().mockReturnThis(),
+            value : jest.fn().mockReturnValue()
+        };
+        const repository = new BookRepository(dbMock);
+
+        expect(repository.getBookByName('test')).toStrictEqual(null);
     });
 });
 
