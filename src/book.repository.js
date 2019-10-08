@@ -59,9 +59,49 @@ class BookRepository {
      *      ....
      *  ]
      */
-    getCountBookAddedByMont(bookName) {
+    getCountBookAddedByMonth(bookName) {
+        var array = this.db.get('books').filter({name: bookName}).sortBy('added_at').value();
+        var length = array.length;
+        var result = [];
+        if(length > 0) {
+            var year = new Date(array[0].added_at).getFullYear();
+            var month = new Date(array[0].added_at).getMonth() + 1;
+            var count = 1;
+            var count_cumulative = 1;
 
+            let newYear, newMonth, newDate;
+            for(let i = 1 ; i < length ; ++i) {
+                newDate =  new Date(array[i].added_at)
+                newYear = newDate.getFullYear();
+                newMonth = newDate.getMonth() + 1;
+                if(newYear != year || newMonth != month) {
+                    result.push({
+                        year: year,
+                        month: month,
+                        count: count,
+                        count_cumulative: count_cumulative
+                    });
+
+                    count = 1;
+                    year = newYear;
+                    month = newMonth;
+                }
+                else {
+                    ++count;
+                }
+                ++count_cumulative;
+            }
+
+            result.push({
+                year: year,
+                month: month,
+                count: count,
+                count_cumulative: count_cumulative
+            });
+        }
+        return result;
     }
+
 
 }
 
