@@ -45,3 +45,25 @@ describe('Book repository getTotalPrice', function () {
         expect(repository.getTotalPrice()).toBe(4);
     });
 });
+
+describe('Book repository getBookByName', function () {
+
+    var object = {
+        'id' : 1,
+        "name" :"test",
+        'price' :6.1,
+        "added_at" : '2019-01-01'
+    };
+
+    test('get book by name ', () => {
+
+        const dbMock = {
+            get : jest.fn().mockReturnThis(),
+            find : jest.fn().mockReturnThis(),
+            value : jest.fn().mockReturnValue(object)
+        };
+        const repository = new BookRepository(dbMock);
+
+        expect(repository.getBookByName('test')).toStrictEqual(object);
+    });
+});
