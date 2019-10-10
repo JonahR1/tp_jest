@@ -12,3 +12,5 @@ const repository = new BookRepository(db);
 
 console.log("Number of books : " + repository.getTotalCount());
 console.log("Sum price of books : " + repository.getTotalPrice());
+console.log("Get the book with name 'test' : ", repository.getBookByName('test'));
+console.log("Get details of book added by month and name ('test') : ", repository.getCountBookAddedByMonth("test"));
