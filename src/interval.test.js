@@ -55,6 +55,28 @@ describe("intersection" , () => {
 
         expect(i1.intersection(i2)).toStrictEqual(null);
     });
+
+    test('Test (0,3) and nothing => null', () => {
+        expect(i1.intersection()).toStrictEqual(null);
+    });
+
+    test('Test (0,3) and null => null', () => {
+        var i2 = null;
+
+        expect(i1.intersection()).toStrictEqual(null);
+    });
+
+    test('Test (0,3) and (1,2) => (1, 3)', () => {
+        var i2 = new Interval(1, 2);
+
+        expect(i1.intersection(i2)).toStrictEqual(new Interval(1, 2));
+    });
+
+    test('Test (0,3) and (-1,2) => (1, 3)', () => {
+        var i2 = new Interval(-1, 2);
+
+        expect(i1.intersection(i2)).toStrictEqual(new Interval(0, 2));
+    });
 });
 
 describe("exclusion" , () => {
