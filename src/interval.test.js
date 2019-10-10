@@ -69,4 +69,38 @@ describe("exclusion" , () => {
 
         expect(i1.exclusion(i2)).toStrictEqual([i1, i2]);
     });
+
+    test('Test (0,3) and (1,2) => [(0, 1), (2, 3)]', () => {
+        var i2 = new Interval(1, 2);
+
+        expect(i1.exclusion(i2)).toStrictEqual([new Interval(0, 1), new Interval(2, 3)]);
+    });
+
+    test('Test (0,3) and (-1,6) => [(-1, 0), (3, 6)]', () => {
+        var i2 = new Interval(-1, 6);
+
+        expect(i1.exclusion(i2)).toStrictEqual([new Interval(-1, 0), new Interval(3, 6)]);
+    });
+
+    test('Test (0,3) and (-1,2) => [(-1, 0), (2, 3)]', () => {
+        var i2 = new Interval(-1, 2);
+
+        expect(i1.exclusion(i2)).toStrictEqual([new Interval(-1, 0), new Interval(2, 3)]);
+    });
+
+    test('Test (0,3) and (3,6) => [(0, 3), (3, 6)]', () => {
+        var i2 = new Interval(3, 6);
+
+        expect(i1.exclusion(i2)).toStrictEqual([i1, i2]);
+    });
+
+    test('Test (0,3) and null => [(0, 3)]', () => {
+        var i2 = null;
+
+        expect(i1.exclusion(i2)).toStrictEqual([i1]);
+    });
+
+    test('Test (0,3) and nothing => [(0, 3)]', () => {
+        expect(i1.exclusion()).toStrictEqual([i1]);
+    });
 });
