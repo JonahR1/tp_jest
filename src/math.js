@@ -113,6 +113,7 @@ Util.cipher = function (phrase) {
 };
 
 /**
+ * Bonus
  * Retourne le nombre de paires dans un tableau
  *
  * Exp :
@@ -125,13 +126,27 @@ Util.cipher = function (phrase) {
  * @return int
  */
 Util.pairs = function(array) {
-    let i = 0;
+    let count = 0;
+    if(typeof(array) != "undefined" && array != null) {
+        let tmp = 1;
 
-    // var
-    //
-    // while(array.indexOf(array[i])) {
-    //
-    // }
+        array.sort();
+
+        let length = array.length
+        for (let i = 1; i < length; ++i ) {
+            if(array[i] === array[i-1]) {
+                tmp++;
+            }
+            else {
+                count += tmp*(tmp-1)/2
+                tmp = 1;
+            }
+        }
+        if(tmp > 1 ){
+            count += tmp*(tmp-1)/2
+        }
+    }
+    return count;
 };
 
 module.exports = Util;
