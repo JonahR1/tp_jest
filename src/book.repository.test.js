@@ -195,7 +195,13 @@ describe('Book repository getCountBookAddedByMonth', function () {
             id: 1,
             name: "test",
             price: 6.1,
-            added_at: "2019-12-04"
+            added_at: "2020-12-04"
+        },
+        {
+            id: 1,
+            name: "test",
+            price: 6.1,
+            added_at: "2020-12-04"
         }];
 
     var result = [
@@ -218,10 +224,10 @@ describe('Book repository getCountBookAddedByMonth', function () {
              "year": 2019,
             },
             {
-             "count": 1,
-             "count_cumulative": 4,
+             "count": 2,
+             "count_cumulative": 5,
              "month": 12,
-             "year": 2019,
+             "year": 2020,
             }]
     
     test('get number of a book added by month with null value => [] ', () => {

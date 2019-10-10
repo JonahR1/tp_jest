@@ -28,6 +28,12 @@ describe("includes" , () => {
     });
 });
 
+test('Test toString', () => {
+    var interval = new Interval(0, 1);
+
+    expect(interval.toString()).toStrictEqual("[0,1]");
+});
+
 describe("union" , () => {
     var i1 = new Interval(0,2);
     test('Test (0,2) and (0,1) => [(0, 2)]', () => {
