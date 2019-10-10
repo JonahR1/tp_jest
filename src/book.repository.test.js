@@ -42,6 +42,20 @@ describe('Book repository getTotalCount', function () {
 
         expect(repository.getTotalCount()).toBe(1);
     });
+
+    test('get number of books check call', () => {
+
+        const dbMock = {
+            get : jest.fn().mockReturnThis(),
+            size : jest.fn().mockReturnThis(),
+            value : jest.fn().mockReturnValue(1)
+        };
+        const repository = new BookRepository(dbMock);
+
+        repository.getTotalCount();
+
+        expect(dbMock.value.mock.calls.length).toBe(1);
+    });
 });
 
 describe('Book repository getTotalPrice', function () {
