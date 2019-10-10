@@ -40,6 +40,28 @@ describe("union" , () => {
 
         expect(i1.union(i2)).toStrictEqual([i1, i2]);
     });
+
+    test('Test (0,2) and (-3,6) => [(-3, 6)]', () => {
+        var i2 = new Interval(-3, 6);
+
+        expect(i1.union(i2)).toStrictEqual([new Interval(-3, 6)]);
+    });
+
+    test('Test (0,2) and (-3,1) => [(-3, 2)]', () => {
+        var i2 = new Interval(-3, 1);
+
+        expect(i1.union(i2)).toStrictEqual([new Interval(-3, 2)]);
+    });
+
+    test('Test (0,2) and null => [(0, 2)]', () => {
+        var i2 = null;
+
+        expect(i1.union(i2)).toStrictEqual([new Interval(0, 2)]);
+    });
+
+    test('Test (0,2) and nothing => [(0, 2)]', () => {
+        expect(i1.union()).toStrictEqual([new Interval(0, 2)]);
+    });
 });
 
 
