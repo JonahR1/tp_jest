@@ -129,6 +129,46 @@ describe('Book repository getBookByName', function () {
 
         expect(repository.getBookByName('test')).toStrictEqual(null);
     });
+
+    test("get book by name with a null result (bookname argument is not defined or null)", () => {
+
+        const dbMock = {
+            get : jest.fn().mockReturnThis(),
+            find : jest.fn().mockReturnThis(),
+            value : jest.fn().mockReturnValue()
+        };
+        const repository = new BookRepository(dbMock);
+
+        expect(repository.getBookByName()).toStrictEqual(null);
+    });
+
+    test("get book by name call test with 0 argument", () => {
+
+        const dbMock = {
+            get : jest.fn().mockReturnThis(),
+            find : jest.fn().mockReturnThis(),
+            value : jest.fn().mockReturnValue()
+        };
+        const repository = new BookRepository(dbMock);
+
+        repository.getBookByName();
+
+        expect(dbMock.value.mock.calls.length).toBe(0);
+    });
+
+    test("get book by name call test with argument", () => {
+
+        const dbMock = {
+            get : jest.fn().mockReturnThis(),
+            find : jest.fn().mockReturnThis(),
+            value : jest.fn().mockReturnValue(object)
+        };
+        const repository = new BookRepository(dbMock);
+
+        repository.getBookByName("test");
+
+        expect(dbMock.value.mock.calls.length).toBe(1);
+    });
 });
 
 describe('Book repository getCountBookAddedByMonth', function () {
