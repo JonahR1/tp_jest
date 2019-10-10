@@ -118,32 +118,52 @@ class Interval {
      */
     exclusion(interval) {
         var intervals =  [];
-        if(this.end > interval.start && this.start < interval.end) {
-            let start1, start2, end1, end2;
+        if(typeof(interval) != "undefined" &&  interval != null) {
+            if(this.end >= interval.start && this.start <= interval.end) {
+                let start1, start2, end1, end2;
 
-            if(this.start < interval.start) {
-                start1 = this.start;
-                start2 = this.end;
-                end1 = interval.start;
-                end2 = interval.end;
+                if(this.start < interval.start) {
+                    if(this.end < interval.end) {
+                        start1 = this.start;
+                        start2 = this.end;
+                        end1 = interval.start;
+                        end2 = interval.end;
+                    }
+                    else {
+                        start1 = this.start;
+                        start2 = interval.end;
+                        end1 = interval.start;
+                        end2 = this.end;
+                    }
+                }
+                else {
+                    if(this.end < interval.end) {
+                        start1 = interval.start;
+                        start2 = this.end;
+                        end1 = this.start;
+                        end2 = interval.end;
+                    }
+                    else {
+                        start1 = interval.start;
+                        start2 = interval.end;
+                        end1 = this.start;
+                        end2 = this.end;
+                    }
+                }
+
+                intervals.push(new Interval(start1, end1));
+                intervals.push(new Interval(start2, end2));
             }
             else {
-                start1 = interval.start;
-                start2 = interval.end;
-                end1 = this.start;
-                end2 = this.end;
+                intervals.push(this);
+                intervals.push(interval);
             }
-
-            intervals.push(new Interval(start1, end1));
-            intervals.push(new Interval(start2, end2));
         }
-        else {
-            intervals.push(this);
-            intervals.push(interval);
-        }
+        else intervals.push(this);
 
         return intervals;
     };
 }
+
 
 module.exports = Interval;
