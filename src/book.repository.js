@@ -8,7 +8,7 @@ class BookRepository {
     }
 
     save (book) {
-        this.db.get('books').push(book).write();
+        if(book != null && typeof(book) != "undefined") this.db.get('books').push(book).write();
     }
 
     /**
