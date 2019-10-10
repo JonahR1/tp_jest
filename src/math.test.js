@@ -59,3 +59,20 @@ test('Test fizzBuzz 15 => [1, 2, "Fizz", 4, "Buzz", "Fizz", 7, 8, "Fizz", "Buzz"
 test('Test cypher Test Unitaire => Uftu Vojubjsf', () => {
     expect(Util.cipher("Test Unitaire")).toBe("Uftu Vojubjsf");
 });
+
+describe('Test pairs', function () {
+    test.each([
+        [ , 0],
+        [null, 0],
+        [[3], 0],
+        [[3,3], 1],
+        [[3,3,5,], 1],
+        [[3,3,5,5,5], 4],
+    ])(
+        'pairs %i equals to %i',
+        (n, expected) => {
+            expect(Util.pairs(n)).toBe(expected);
+        }
+    );
+
+});
