@@ -249,6 +249,46 @@ describe('Book repository getCountBookAddedByMonth', function () {
 
         expect(repository.getCountBookAddedByMonth('test')).toStrictEqual(result);
     });
+
+    test('get number of a book added by month with argument and array in value  check call', () => {
+
+        const dbMock = {
+            get : jest.fn().mockReturnThis(),
+            filter: jest.fn().mockReturnThis(),
+            sortBy: jest.fn().mockReturnThis(),
+            value : jest.fn().mockReturnValue(data)
+        };
+        const repository = new BookRepository(dbMock);
+        repository.getCountBookAddedByMonth('test');
+        expect(dbMock.value.mock.calls.length).toBe(1);
+    });
+
+    test('get number of a book added by month with no argument and array in value check call', () => {
+
+        const dbMock = {
+            get : jest.fn().mockReturnThis(),
+            filter: jest.fn().mockReturnThis(),
+            sortBy: jest.fn().mockReturnThis(),
+            value : jest.fn().mockReturnValue(data)
+        };
+        const repository = new BookRepository(dbMock);
+        repository.getCountBookAddedByMonth();
+        expect(dbMock.value.mock.calls.length).toBe(0);
+    });
+
+
+    test('get number of a book added by month with argument and no array in value check call', () => {
+
+        const dbMock = {
+            get : jest.fn().mockReturnThis(),
+            filter: jest.fn().mockReturnThis(),
+            sortBy: jest.fn().mockReturnThis(),
+            value : jest.fn().mockReturnValue()
+        };
+        const repository = new BookRepository(dbMock);
+        repository.getCountBookAddedByMonth('test');
+        expect(dbMock.value.mock.calls.length).toBe(1);
+    });
 });
 
 
